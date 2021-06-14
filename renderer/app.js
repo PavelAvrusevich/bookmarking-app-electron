@@ -6,6 +6,24 @@ let closeModal = document.getElementById('close-modal');
 let modal = document.getElementById('modal');
 let itemUrl = document.getElementById('url');
 let addItem = document.getElementById('add-item');
+let search = document.getElementById('search');
+
+//Filter items with "search"
+search.addEventListener('keyup', (e) => {
+    //Loop items
+    Array.from(document.getElementsByClassName('read-item')).forEach((item) => {
+        //Hide items that don't match search value
+        let hasMatch = item.innerText.toLowerCase().includes(search.value);
+        item.style.display = hasMatch ? 'flex' : 'none';
+    });
+});
+
+//Navigate item selection with up/down arrows
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        items.changeSelection(e.key);
+    }
+});
 
 //Disable and enable modal buttons
 const toggleModalButtons = () => {
