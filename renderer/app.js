@@ -1,4 +1,5 @@
 const { ipcRenderer } = require('electron');
+const items = require('./items');
 
 let showModal = document.getElementById('show-modal');
 let closeModal = document.getElementById('close-modal');
@@ -46,7 +47,8 @@ addItem.addEventListener('click', (e) => {
 
 //Listen for new item from main process
 ipcRenderer.on('new-item-success', (e, newItem) => {
-    console.log(newItem);
+    //Add new item to "items"
+    items.addItem(newItem, true);
 
     //Enable buttons
     toggleModalButtons();
