@@ -16,5 +16,13 @@ closeButton.style.cursor = 'default';
 closeButton.style.boxShadow = '2px 2px 2px rgba(0,0,0,0.2)';
 closeButton.style.zIndex = '9999';
 
+// Attach click handler to button
+closeButton.onclick = () => {
+    window.opener.postMessage({
+        action: 'delete-reader-item',
+        itemIndex: {{index}},
+    });
+};
+
 // Append button to body
 document.getElementsByTagName('body')[0].append(closeButton);

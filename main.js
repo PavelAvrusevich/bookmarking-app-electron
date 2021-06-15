@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const windowStateKeeper = require('electron-window-state');
 const readItem = require('./readItem');
+const appMenu = require('./menu');
 
 let mainWindow;
 
@@ -33,6 +34,9 @@ function createWindow() {
             nodeIntegration: true,
         },
     });
+
+    // Create main app menu
+    appMenu();
 
     mainWindow.loadFile('renderer/main.html');
 
