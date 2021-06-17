@@ -36,7 +36,7 @@ function createWindow() {
     });
 
     // Create main app menu
-    appMenu();
+    appMenu(mainWindow.webContents);
 
     mainWindow.loadFile('renderer/main.html');
 

@@ -1,12 +1,48 @@
-const { Menu } = require('electron');
+const { Menu, shell, app } = require('electron');
 
 // Module function to create main app menu
-module.exports = () => {
+module.exports = (appWin) => {
     // Menu template
     let template = [
         {
             label: 'Items',
-            submenu: [],
+            submenu: [
+                {
+                    label: 'Add new',
+                    accelerator: 'CmdOrCtrl+O',
+                    click: () => {
+                        appWin.send('menu-show-modal');
+                    },
+                },
+                {
+                    label: 'Open item',
+                    accelerator: 'CmdOrCtrl+Enter',
+                    click: () => {
+                        appWin.send('menu-open-item');
+                    },
+                },
+                {
+                    label: 'Delete item',
+                    accelerator: 'CmdOrCtrl+Backspace',
+                    click: () => {
+                        appWin.send('menu-delete-item');
+                    },
+                },
+                {
+                    label: 'Open in Browser',
+                    accelerator: 'CmdOrCtrl+Shift+Enter',
+                    click: () => {
+                        appWin.send('menu-open-item-native');
+                    },
+                },
+                {
+                    label: 'Search items',
+                    accelerator: 'CmdOrCtrl+S',
+                    click: () => {
+                        appWin.send('menu-focus-search');
+                    },
+                },
+            ],
         },
         {
             role: 'editMenu',
@@ -16,7 +52,14 @@ module.exports = () => {
         },
         {
             role: 'help',
-            submenu: [],
+            submenu: [
+                {
+                    label: 'Learn more',
+                    click: () => {
+                        shell.openExternal('https://github.com/PavelAvrusevich/bookmarking-app-electron');
+                    },
+                },
+            ],
         },
     ];
 

@@ -1,3 +1,4 @@
+const { shell } = require('electron');
 const fs = require('fs');
 
 let items = document.getElementById('items');
@@ -111,6 +112,21 @@ exports.open = () => {
 
     // Inject js with specific item index (selectedItem.index)
     proxyWin.eval(readerJS.replace('{{index}}', selectedItem.index));
+};
+
+// Open selected item in native Browser
+exports.openNative = () => {
+    //Only if we have items
+    if (!this.storage.length) return;
+
+    //Get selected item
+    let selectedItem = this.getSelectedItem();
+
+    //Get url from item
+    let url = selectedItem.node.dataset.url;
+
+    // Open in user's default system browser
+    shell.openExternal(url);
 };
 
 // Add new item

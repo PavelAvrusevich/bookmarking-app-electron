@@ -1,5 +1,5 @@
 {
-    "name": "master-electron",
+    "name": "bookmarking-app",
     "version": "1.0.0",
     "description": "Master Electron Course Code",
     "main": "main.js",
@@ -8,13 +8,10 @@
         "watch": "nodemon --exec npm start",
         "reset": "git reset --hard"
     },
-    "repository": "https://github.com/stackacademytv/master-electron",
+    "repository": "https://github.com/PavelAvrusevich/bookmarking-app-electron",
     "keywords": [
-        "Electron",
-        "Master Electron",
-        "demo"
+        "Electron"
     ],
-    "author": "GitHub, Stackacademytv",
     "license": "CC0-1.0",
     "devDependencies": {
         "electron": "^13.1.2",
