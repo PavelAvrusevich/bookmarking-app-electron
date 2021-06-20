@@ -1,23 +1,40 @@
 {
     "name": "bookmarking-app",
     "version": "1.0.0",
-    "description": "Master Electron Course Code",
+    "description": "Electron project",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
         "watch": "nodemon --exec npm start",
-        "reset": "git reset --hard"
+        "reset": "git reset --hard",
+        "build": "electron-builder -w zip",
+        "release": "electron-builder -w zip -p 'onTagOrDraft'",
+        "win-sert": "electron-builder create-self-signed-cert -p PavelAvrusevich"
     },
     "repository": "https://github.com/PavelAvrusevich/bookmarking-app-electron",
+    "homepage": "https://github.com/PavelAvrusevich/bookmarking-app-electron",
     "keywords": [
         "Electron"
     ],
+    "author": "PavelAvrusevich",
     "license": "CC0-1.0",
     "devDependencies": {
         "electron": "^13.1.2",
+        "electron-builder": "^22.11.7",
         "nodemon": "^2.0.7"
     },
     "dependencies": {
         "electron-window-state": "^5.0.3"
+    },
+    "build": {
+        "appId": "com.electron.bookmarking-app",
+        "publish": {
+            "provider": "github"
+        },
+        "win": {
+            "certificateFile": "./private/PavelAvrusevich.pfx",
+            "certificatePassword": "",
+            "publisherName": "PavelAvrusevich"
+        }
     }
 }

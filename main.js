@@ -42,8 +42,6 @@ function createWindow() {
 
     state.manage(mainWindow);
 
-    mainWindow.webContents.openDevTools();
-
     // Listen for window being closed
     mainWindow.on('closed', () => {
         mainWindow = null;
